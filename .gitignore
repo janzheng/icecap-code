@@ -1,8 +1,8 @@
 icecream-dash/.DS_Store
 icecream-dash/node_modules
-icecream-dash//build
-icecream-dash//.svelte-kit
-icecream-dash//package
+icecream-dash/build
+icecream-dash/.svelte-kit
+icecream-dash/package
 icecream-dash/.env
 icecream-dash/.env.*
 icecream-dash/!.env.example
