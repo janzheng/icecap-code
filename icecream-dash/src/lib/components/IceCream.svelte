@@ -12,13 +12,17 @@
 
 
   // Group orders by scenario
-  let ordersByScenario = entry._meta.orders.reduce((groups, order) => {
-    if (!groups[order.scenario]) {
-      groups[order.scenario] = [];
-    }
-    groups[order.scenario].push(order);
-    return groups;
-  }, {});
+  let ordersByScenario
+  
+  $: if(entry) {
+    ordersByScenario = entry._meta.orders.reduce((groups, order) => {
+      if (!groups[order.scenario]) {
+        groups[order.scenario] = [];
+      }
+      groups[order.scenario].push(order);
+      return groups;
+    }, {});
+  };
 </script>
 
 <Card.Root class="p-0 mb-2">
@@ -27,7 +31,7 @@
       Ice Cream ID: {#if entry._meta.id}{entry._meta.id}{:else}<span class="text-sm text-slate-500">N/A</span>{/if}
     </Card.Title>
 		<Card.Description>
-			{entry._meta.isComplete ? 'Complete' : 'Open'}
+      <!-- {JSON.stringify(entry._meta)} -->
 		</Card.Description>
 	</Card.Header>
 	

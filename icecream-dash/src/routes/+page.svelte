@@ -32,33 +32,33 @@
   if(browser)
     console.log('icecream:', data.icecream)
 
-  function toggleInclusion() {
-    if (inclusionState === 'all') {
-      inclusionState = 'meets';
-      inclusionMessage = 'Inclusion: Meets';
-    } else if (inclusionState === 'meets') {
-      inclusionState = 'doesNotMeet';
-      inclusionMessage = 'Inclusion: Does Not Meet';
-    } else {
-      inclusionState = 'all';
-      inclusionMessage = 'Inclusion: Show All';
-    }
-    applyFilters();
-  }
+  // function toggleInclusion() {
+  //   if (inclusionState === 'all') {
+  //     inclusionState = 'meets';
+  //     inclusionMessage = 'Inclusion: Meets';
+  //   } else if (inclusionState === 'meets') {
+  //     inclusionState = 'doesNotMeet';
+  //     inclusionMessage = 'Inclusion: Does Not Meet';
+  //   } else {
+  //     inclusionState = 'all';
+  //     inclusionMessage = 'Inclusion: Show All';
+  //   }
+  //   applyFilters();
+  // }
 
-  function toggleStatus() {
-    if (statusState === 'all') {
-      statusState = 'open';
-      statusMessage = 'Status: Open';
-    } else if (statusState === 'open') {
-      statusState = 'completed';
-      statusMessage = 'Status: Completed';
-    } else {
-      statusState = 'all';
-      statusMessage = 'Status: Open & Completed';
-    }
-    applyFilters();
-  }
+  // function toggleStatus() {
+  //   if (statusState === 'all') {
+  //     statusState = 'open';
+  //     statusMessage = 'Status: Open';
+  //   } else if (statusState === 'open') {
+  //     statusState = 'completed';
+  //     statusMessage = 'Status: Completed';
+  //   } else {
+  //     statusState = 'all';
+  //     statusMessage = 'Status: Open & Completed';
+  //   }
+  //   applyFilters();
+  // }
 
   onMount(applyFilters);
 </script>
@@ -72,8 +72,8 @@
   <div class="controls w-full | my-4">
     <form class="flex w-full  items-center space-x-2">
       <Input class="max-w-xs" type="Type to search" placeholder="search" bind:value={search} on:input={applyFilters} />
-      <Button class="hover:border-slate-900 border-2 border-solid" variant="secondary" on:click={toggleStatus}>{statusMessage}</Button>
-      <Button class="hover:border-slate-900 border-2 border-solid" variant="secondary" on:click={toggleInclusion}>{inclusionMessage}</Button>
+      <!-- <Button class="hover:border-slate-900 border-2 border-solid" variant="secondary" on:click={toggleStatus}>{statusMessage}</Button> -->
+      <!-- <Button class="hover:border-slate-900 border-2 border-solid" variant="secondary" on:click={toggleInclusion}>{inclusionMessage}</Button> -->
     </form>
     {#if filteredIcecream.length > 0}
       <div class="status | my-4 text-slate-700 text-sm">
