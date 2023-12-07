@@ -4,7 +4,6 @@ import { fetchData } from '$lib/redcap-server-utils'
 // import { getExclusionReasons, getPathogenTargets } from '$lib/redcap-utils'
 
 
-
 function processData(data) {
   let log = data.map(entry => {
     // Initialize _meta object
@@ -14,24 +13,34 @@ function processData(data) {
       'orders': []
     };
 
-    // Extract orders for each scenario
-    for (let i = 1; i <= 5; i++) {
-      let numOrders = parseInt(entry[`s${i}_num_orders`]);
-      if (isNaN(numOrders) && i !== 1) continue; // Skip if no orders for this scenario
+    // Special case for scenario 1
+    if (entry['flavor'] || entry['cup_cone']) {
+      entry['_meta']['orders'].push({
+        'scenario': 1,
+        'containers': entry['cup_cone'],
+        'scoops': [entry['flavor']],
+        'toppings': []
+      });
+    }
 
-      for (let j = 1; j <= (numOrders || 1); j++) { // For s1, there's only 1 order
-        let orderKey = i === 1 ? '' : `s${i}_order${j}`; // For s1, keys don't have the order part
+    // Extract orders for scenarios 2-5
+    for (let i = 2; i <= 5; i++) {
+      let numOrders = parseInt(entry[`s${i}_num_orders`]);
+      if (isNaN(numOrders)) continue; // Skip if no orders for this scenario
+
+      for (let j = 1; j <= numOrders; j++) {
+        let orderKey = `s${i}_order${j}`;
         let order = {
           'scenario': i,
           'name': entry[`${orderKey}_name`],
-          'containers': i === 1 ? entry['cup_cone'] : entry[`${orderKey}_cup_cone`],
+          'containers': entry[`${orderKey}_cup_cone`],
           'scoops': [],
           'toppings': []
         };
 
-        // For s1 and s2, flavor is directly in the order
-        if ([1, 2].includes(i)) {
-          order['scoops'].push(i === 1 ? entry['flavor'] : entry[`${orderKey}_flavor`]);
+        // For s2, flavor is directly in the order
+        if (i === 2) {
+          order['scoops'].push(entry[`${orderKey}_flavor`]);
         }
 
         // For s3, flavor is given once and applies to all scoops
@@ -54,9 +63,10 @@ function processData(data) {
 
         // Extract toppings for s4 and s5
         if ([4, 5].includes(i)) {
-          for (let topping of ['caramel', 'jerky', 'sprinkles']) {
-            if (entry[`${orderKey}_toppings___${topping}`]) {
-              order['toppings'].push(entry[`${orderKey}_toppings___${topping}`]);
+          for (let key in entry) {
+            let match = key.match(new RegExp(`^${orderKey}_toppings___(.+)`));
+            if (match) {
+              order['toppings'].push(entry[key]);
             }
           }
         }
