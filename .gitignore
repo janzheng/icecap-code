@@ -1,0 +1,12 @@
+./icecream-dash/.DS_Store
+./icecream-dash/node_modules
+./icecream-dash//build
+./icecream-dash//.svelte-kit
+./icecream-dash//package
+./icecream-dash/.env
+./icecream-dash/.env.*
+./icecream-dash/!.env.example
+./icecream-dash/vite.config.js.timestamp-*
+./icecream-dash/vite.config.ts.timestamp-*
+./icecream-dash/.vercel
+upload.sh

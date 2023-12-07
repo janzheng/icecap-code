@@ -1,0 +1,13 @@
+Variable / Field Name,Form Name,Section Header,Field Type,Field Label,"Choices, Calculations, OR Slider Labels",Field Note,Text Validation Type OR Show Slider Number,min,max,Identifier?,Branching Logic (Show field only if...),Required Field?,Custom Alignment,Question Number (surveys only),Matrix Group Name,Matrix Group Ranking?,Field Annotation
+icecream_id,icecream_scenario_2,,text,Ice Cream ID,,,,,,,,,,,,,
+s2_num_orders,icecream_scenario_2,,text,How many orders?,,Max orders: 5,integer,0,5,,,y,,,,,
+s2_order1_flavor,icecream_scenario_2,Order #1,radio,[Order #1] What flavor do you want?,"vanilla, vanilla | chocolate, chocolate | strawberry, strawberry",,,,,,[s2_num_orders] > 0,y,,,,,
+s2_order1_cup_cone,icecream_scenario_2,,radio,[Order #1] Cup or Cone?,"cup,cup | cone,cone",,,,,,[s2_num_orders] > 0,y,,,,,
+s2_order2_flavor,icecream_scenario_2,Order #2,radio,[Order #2] What flavor do you want?,"vanilla, vanilla | chocolate, chocolate | strawberry, strawberry",,,,,,[s2_num_orders] > 1,y,,,,,
+s2_order2_cup_cone,icecream_scenario_2,,radio,[Order #2] Cup or Cone?,"cup,cup | cone,cone",,,,,,[s2_num_orders] > 1,y,,,,,
+s2_order3_flavor,icecream_scenario_2,Order #3,radio,[Order #3] What flavor do you want?,"vanilla, vanilla | chocolate, chocolate | strawberry, strawberry",,,,,,[s2_num_orders] > 2,y,,,,,
+s2_order3_cup_cone,icecream_scenario_2,,radio,[Order #3] Cup or Cone?,"cup,cup | cone,cone",,,,,,[s2_num_orders] > 2,y,,,,,
+s2_order4_flavor,icecream_scenario_2,Order #4,radio,[Order #4] What flavor do you want?,"vanilla, vanilla | chocolate, chocolate | strawberry, strawberry",,,,,,[s2_num_orders] > 3,y,,,,,
+s2_order4_cup_cone,icecream_scenario_2,,radio,[Order #4] Cup or Cone?,"cup,cup | cone,cone",,,,,,[s2_num_orders] > 3,y,,,,,
+s2_order5_flavor,icecream_scenario_2,Order #5,radio,[Order #5] What flavor do you want?,"vanilla, vanilla | chocolate, chocolate | strawberry, strawberry",,,,,,[s2_num_orders] > 4,y,,,,,
+s2_order5_cup_cone,icecream_scenario_2,,radio,[Order #5] Cup or Cone?,"cup,cup | cone,cone",,,,,,[s2_num_orders] > 4,y,,,,,
